@@ -368,3 +368,342 @@ RNF10 (Geração de relatórios)
 ### RN Relacionadas
 RN06   
 
+---
+## UC12 — Cancelar Reserva de Aula
+
+### Ator Principal
+Aluno
+
+### Objetivo
+Desistir da participação em uma aula previamente agendada.
+
+### Pré-condições
+- Reserva ativa no sistema.
+
+### Pós-condições
+- Vaga liberada para outros alunos.
+
+### Fluxo Principal
+1.	O aluno solicita o cancelamento da reserva.
+2.	O sistema verifica se o horário atual é pelo menos 1 hora antes da aula (RN03).
+3.	O sistema confirma o cancelamento.
+
+### Fluxos Alternativos
+- **A1 — Fora do prazo:**
+   O sistema impede o cancelamento via app por estar a menos de 1 hora do início.
+
+### RF Relacionados
+RF06
+
+### RNF Relacionados
+RNF08 (Usabilidade)
+
+### RN Relacionadas
+RN03
+
+---
+
+## UC13 — Registrar Presença em Aula 
+
+### Ator Principal
+Instrutor
+
+### Objetivo
+Confirmar a participação dos alunos presentes na aula.
+
+### Pré-condições
+- Aula em andamento ou finalizada.
+
+### Pós-condições
+- Lista de presença atualizada no histórico do aluno.
+
+### Fluxo Principal
+1.	O instrutor acessa a aula agendada.
+2.	O sistema exibe a lista de alunos que reservaram vaga.
+3.	O instrutor marca os alunos presentes.
+4.	O sistema salva as informações.
+
+### Fluxos Alternativos
+- **A1 — Aluno não agendado:**
+O instrutor pode adicionar o aluno manualmente se houver vaga.
+
+### RF Relacionados
+RF07
+
+### RNF Relacionados
+RNF02 (Disponibilidade)
+
+### RN Relacionadas
+RN06
+  
+---
+
+## UC14 — Registrar Avaliação Física
+
+### Ator Principal
+Instrutor
+
+### Objetivo
+Cadastrar métricas corporais do aluno. 
+
+### Pré-condições
+- Aluno deve estar ativo e regular (RN05).
+
+### Pós-condições
+- Avaliação salva e disponível para consulta.
+
+### Fluxo Principal
+1.	O instrutor inicia a avaliação física do aluno.
+2.	O sistema verifica o status do aluno (RN05).
+3.	O instrutor insere peso, altura, dobras cutâneas e IMC.
+4.	O sistema calcula os resultados e salva.
+
+### Fluxos Alternativos
+- **A1 — Aluno irregular:**
+   O sistema bloqueia a avaliação física.
+
+### RF Relacionados
+RF08
+
+### RNF Relacionados
+RNF04 (Integridade)
+
+### RN Relacionadas
+RN05, RN06
+
+---
+
+## UC15 — Anexar Arquivos à Avaliação
+
+### Ator Principal
+Instrutor
+
+### Objetivo
+Adicionar fotos ou laudos externos ao registro de avaliação.
+
+### Pré-condições
+- Avaliação física aberta para edição.
+
+### Pós-condições
+- Arquivos vinculados ao perfil do aluno.
+
+### Fluxo Principal
+1.	O instrutor seleciona a opção "Anexar Arquivos".
+2.	O instrutor escolhe as imagens ou PDFs.
+3.	O sistema realiza o upload e vincula à avaliação atual.
+
+### Fluxos Alternativos
+- **A1 — Arquivo muito grande:**
+   O sistema solicita um arquivo menor conforme limite estabelecido.
+
+### RF Relacionados
+RF08
+
+### RNF Relacionados
+RNF09 (Armazenamento)
+
+### RN Relacionadas
+RN06
+
+---
+
+## UC16 — Gerar Relatório de Inadimplência
+
+### Ator Principal
+Gerente
+
+### Objetivo
+Identificar todos os alunos com pagamentos atrasados.
+
+### Pré-condições
+- Gerente autenticado.
+
+### Pós-condições
+- Lista de inadimplentes exibida/exportada.
+
+### Fluxo Principal
+1.	O gerente solicita o relatório de inadimplência.
+2.	O sistema filtra os pagamentos vencidos e não pagos.
+3.	O sistema exibe nome, valor e dias de atraso.
+
+### Fluxos Alternativos
+- **A1 — Filtro por período:**
+  O gerente pode restringir a busca por datas específicas.
+
+### RF Relacionados
+RF09
+
+### RNF Relacionados
+RNF Relacionados
+
+### RN Relacionadas
+RN06
+
+---
+
+## UC17 — Gerar Relatório de Ocupação de Aulas
+
+### Ator Principal
+Gerente
+
+### Objetivo
+Analisar a demanda das modalidades coletivas.
+
+### Pré-condições
+- Dados de agendamento e presença existentes.
+
+### Pós-condições
+- Relatório com porcentagens de ocupação gerado.
+
+### Fluxo Principal
+1.	O gerente acessa "Relatórios de Aulas".
+2.	O sistema processa a média de alunos por aula vs. capacidade máxima.
+3.	O sistema gera gráficos de desempenho das aulas.
+
+### Fluxos Alternativos
+- **A1 — Sem dados:**
+   O sistema informa que não há dados suficientes para o período.
+
+### RF Relacionados
+RF09
+
+### RNF Relacionados
+RNF10 (Geração de relatórios)
+
+### RN Relacionadas
+RN06
+
+---
+
+## UC18 — Notificar Vencimento de Mensalidade
+
+### Ator Principal
+Sistema
+
+### Objetivo
+Alertar o aluno sobre o prazo de pagamento.
+
+### Pré-condições
+- Mensalidade próxima do vencimento.
+
+### Pós-condições
+- Notificação enviada ao app/e-mail do aluno.
+
+### Fluxo Principal
+1.	O sistema identifica parcelas que vencem em 3 dias.
+2.	O sistema dispara uma notificação automática (RF10).
+3.	O sistema registra o envio no log de comunicações.
+
+### Fluxos Alternativos
+- **A1 — Falha no envio:**
+  O sistema agenda uma nova tentativa em 4 horas.
+
+### RF Relacionados
+RF10
+
+### RNF Relacionados
+RNF11 (Confiabilidade de entrega)
+
+### RN Relacionadas
+Nenhuma
+
+---
+
+## UC19 — Notificar Confirmação de Agendamento
+
+### Ator Principal
+Sistema
+
+### Objetivo
+Confirmar formalmente que a vaga do aluno foi reservada.
+
+### Pré-condições
+- Conclusão bem-sucedida do UC10.
+
+### Pós-condições
+- Aluno recebe confirmação instantânea.
+
+### Fluxo Principal
+1.	Após a reserva, o sistema gera uma mensagem de confirmação.
+2.	O sistema envia notificação push para o aluno.
+
+### Fluxos Alternativos
+- **A1 — Aluno desativou notificações:**
+  O sistema apenas mantém o registro no portal interno.
+
+### RF Relacionados
+RF10
+
+### RNF Relacionados
+RNF11 (Confiabilidade)
+
+### RN Relacionadas
+Nenhuma
+
+---
+
+## UC20 — Notificar Liberação de Avaliação Física
+
+### Ator Principal
+Sistema
+
+### Objetivo
+Avisar o aluno que seus resultados já podem ser consultados.
+
+### Pré-condições
+- Conclusão do UC13 pelo instrutor.
+
+### Pós-condições
+- Notificação enviada ao aluno.
+
+### Fluxo Principal
+1.	O instrutor finaliza e salva a avaliação.
+2.	O sistema identifica a mudança de status da avaliação para "Concluída".
+3.	O sistema envia alerta ao aluno (RF10).
+
+### Fluxos Alternativos
+- **A1 — Avaliação pendente de revisão:**
+  O sistema aguarda a liberação manual pelo instrutor chefe se necessário.
+
+### RF Relacionados
+RF10
+
+### RNF Relacionados
+RNF11 (Confiabilidade)
+
+### RN Relacionadas
+Nenhuma
+
+---
+
+## UC21 — Consultar Histórico de Acessos
+
+### Ator Principal
+Gerente
+
+### Objetivo
+Monitorar o fluxo de pessoas e frequência individual.
+
+### Pré-condições
+- Registros de catraca existentes (UC08).
+
+### Pós-condições
+- Dados de frequência exibidos em tela.
+
+### Fluxo Principal
+1.	O gerente busca por um aluno ou data específica.
+2.	O sistema recupera todos os registros de entrada e saída.
+3.	O sistema exibe o histórico detalhado.
+
+### Fluxos Alternativos
+- **A1 — Acesso negado:**
+   O sistema destaca em vermelho as tentativas de entrada bloqueadas pela RN01.
+
+### RF Relacionados
+RF09
+
+### RNF Relacionados
+RNF10 (Relatórios)
+
+### RN Relacionadas
+RN01, RN06
