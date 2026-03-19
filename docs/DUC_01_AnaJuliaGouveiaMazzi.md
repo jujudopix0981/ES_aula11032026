@@ -45,6 +45,7 @@ Fluxo Principal: 1. Gerente acessa área de planos; 2. Define nome, valor e dura
 RF: RF03 | RNF: RNF02 | RN: RN06
 <img width="244" height="298" alt="imagem" src="https://github.com/user-attachments/assets/e327f13d-9790-46dc-8c44-6da54fa606a6" />
 
+
 UC04 — Registrar Matrícula
 Ator Principal: Recepcionista
 
@@ -58,6 +59,7 @@ Fluxo Principal: 1. Seleciona aluno; 2. Seleciona plano; 3. Confirma vigência.
 
 RF: RF04 | RNF: RNF02 | RN: RN06
 <img width="209" height="303" alt="imagem" src="https://github.com/user-attachments/assets/c80fb6ae-053e-463d-96f2-e7f3876bd5b0" />
+
 
 UC05 — Processar Pagamento de Mensalidade
 Ator Principal: Recepcionista
@@ -247,6 +249,7 @@ Objetivo: Definir o capacity de cada sala/modalidade.
 RF: RF20 | RNF: RNF02 | RN: RN02, RN06
 <img width="229" height="248" alt="imagem" src="https://github.com/user-attachments/assets/a3242279-b2af-4e3b-9d9b-56436ed7e865" />
 
+<img width="823" height="1425" alt="imagem" src="https://github.com/user-attachments/assets/82bbb099-8479-44bb-aec9-de8cf3af10d6" />
 
 
 
